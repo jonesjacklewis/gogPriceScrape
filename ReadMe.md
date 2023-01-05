@@ -1,5 +1,10 @@
 # Gog Price Alert
 
+## Stages
+
+1. Install Required Modules (below)
+2. Update `main.ini` with the relevant values
+
 ## Modules
 
 | Name     | Usage                           |
