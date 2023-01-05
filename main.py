@@ -1,10 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
 from typing import Union
+import configparser
 
+def get_url(config_file: str = "main.ini") -> str:
+    config = configparser.ConfigParser()
+    config.read(config_file)
 
-def get_price_from_url(URL: str) -> Union[float, None]:
-    r = requests.get(URL)
+    return config["gog_url"]["url"]
+
+def get_price_from_url(url: str) -> Union[float, None]:
+    r = requests.get(url)
     soup = BeautifulSoup(r.content, features="html.parser")
 
     PRICE_CLASS = "product-actions-price__final-amount"
@@ -16,9 +22,9 @@ def get_price_from_url(URL: str) -> Union[float, None]:
         return None
 
 def main():
-    URL = "https://www.gog.com/en/game/the_elder_scrolls_v_skyrim_anniversary_edition"
+    url = get_url()
 
-    if price := get_price_from_url(URL):
+    if price := get_price_from_url(url):
         print(price)
     else:
         print("Price not found")
