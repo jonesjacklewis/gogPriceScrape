@@ -50,7 +50,7 @@ def get_soup_from_url(url: str) -> Union[BeautifulSoup, None]:
     try:
         r = requests.get(url)
         return BeautifulSoup(r.content, features="html.parser")
-    except:
+    except Exception:
         return None
 
 def get_title_from_soup(soup: BeautifulSoup) -> Union[str, None]:
