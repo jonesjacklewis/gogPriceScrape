@@ -70,7 +70,7 @@ def get_price_from_soup(soup: BeautifulSoup) -> Union[float, None]:
     except AttributeError:
         return None
     
-def send_email(username, password, service, subject, to, message):
+def send_email(username: str, password: str, service: str, subject: str, to: str, message: str) -> None:
     msg = MIMEText(message)
 
     msg['Subject'] = subject
@@ -81,7 +81,7 @@ def send_email(username, password, service, subject, to, message):
     s.login(username, password)
     s.sendmail(username, to, msg.as_string())
 
-def send_price_alert(title, price):
+def send_price_alert(title: str, price: str) -> None:
     password = get_email_password()
     from_email = get_from_email()
     host = get_email_host()
