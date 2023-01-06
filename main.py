@@ -5,13 +5,15 @@ import configparser
 import smtplib
 from email.mime.text import MIMEText
 
-def get_url(config_file: str = "main.ini") -> str:
+DEFAULT_CONFIG = "main.ini"
+
+def get_url(config_file: str = DEFAULT_CONFIG) -> str:
     config = configparser.ConfigParser()
     config.read(config_file)
 
     return config["gog"]["url"]
 
-def get_max_price(config_file: str = "main.ini") -> Union[float, None]:
+def get_max_price(config_file: str = DEFAULT_CONFIG) -> Union[float, None]:
     config = configparser.ConfigParser()
     config.read(config_file)
 
@@ -20,25 +22,25 @@ def get_max_price(config_file: str = "main.ini") -> Union[float, None]:
     except ValueError:
         return None
 
-def get_email_password(config_file: str = "main.ini") -> str:
+def get_email_password(config_file: str = DEFAULT_CONFIG) -> str:
     config = configparser.ConfigParser()
     config.read(config_file)
 
     return config["email"]["password"]
 
-def get_from_email(config_file: str = "main.ini") -> str:
+def get_from_email(config_file: str = DEFAULT_CONFIG) -> str:
     config = configparser.ConfigParser()
     config.read(config_file)
 
     return config["email"]["from"]
 
-def get_email_host(config_file: str = "main.ini") -> str:
+def get_email_host(config_file: str = DEFAULT_CONFIG) -> str:
     config = configparser.ConfigParser()
     config.read(config_file)
 
     return config["email"]["host"]
 
-def get_email_to(config_file: str = "main.ini") -> str:
+def get_email_to(config_file: str = DEFAULT_CONFIG) -> str:
     config = configparser.ConfigParser()
     config.read(config_file)
 
